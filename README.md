@@ -25,7 +25,7 @@ jobs:
 
       - name: generate license report
         id: license-report
-        uses: dafnik/generate-license-report@v1
+        uses: dafnik/generate-license-report@v0
         # with:
         # package: 'package.json'
         # path: 'license.json'
