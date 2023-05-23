@@ -67,6 +67,32 @@
   {
     "department": "kessler",
     "relatedTo": "stuff",
+    "name": "@commitlint/cli",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/conventional-changelog/commitlint.git",
+    "remoteVersion": "17.6.3",
+    "installedVersion": "17.6.3",
+    "definedVersion": "17.6.3",
+    "author": "Mario Nebl hello@herebecode.com"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@commitlint/config-conventional",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/conventional-changelog/commitlint.git",
+    "remoteVersion": "17.6.3",
+    "installedVersion": "17.6.3",
+    "definedVersion": "17.6.3",
+    "author": "Mario Nebl <hello@herebecode.com>"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
     "name": "@vercel/ncc",
     "licensePeriod": "perpetual",
     "material": "material",
@@ -76,5 +102,31 @@
     "installedVersion": "0.36.1",
     "definedVersion": "0.36.1",
     "author": "n/a"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "husky",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/typicode/husky.git",
+    "remoteVersion": "8.0.3",
+    "installedVersion": "8.0.3",
+    "definedVersion": "8.0.3",
+    "author": "Typicode <typicode@gmail.com>"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "pretty-quick",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/azz/pretty-quick.git",
+    "remoteVersion": "3.1.3",
+    "installedVersion": "3.1.3",
+    "definedVersion": "3.1.3",
+    "author": "Lucas Azzola <@azz>"
   }
 ]
