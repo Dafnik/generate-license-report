@@ -5,6 +5,7 @@
   "author": "Dafnik",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
     "prettify": "prettier --write .",
     "build": "ncc build src/index.js --out=dist -m && ncc build node_modules/license-report/index.js --out=dist-license-report",
     "dev": "node dist/index.js",
