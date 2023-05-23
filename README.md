@@ -12,7 +12,7 @@ on:
     - cron: '0 4 */30 * *' # At 04:00 on every 30ts day-of-month.
 
 jobs:
-  build:
+  generate-license-pr:
     runs-on: ubuntu-latest
     steps:
       - name: checkout your repository using git
