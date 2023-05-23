@@ -19,19 +19,19 @@ dependencies:
 
 devDependencies:
   '@commitlint/cli':
-    specifier: ^17.6.3
+    specifier: 17.6.3
     version: 17.6.3
   '@commitlint/config-conventional':
-    specifier: ^17.6.3
+    specifier: 17.6.3
     version: 17.6.3
   '@vercel/ncc':
     specifier: 0.36.1
     version: 0.36.1
   husky:
-    specifier: ^8.0.3
+    specifier: 8.0.3
     version: 8.0.3
   pretty-quick:
-    specifier: ^3.1.3
+    specifier: 3.1.3
     version: 3.1.3(prettier@2.8.8)
 
 packages:
