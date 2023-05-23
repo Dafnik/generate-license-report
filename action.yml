@@ -2,7 +2,7 @@ name: 'generate-license-report'
 author: 'Dafnik'
 description: 'Generates a license report'
 branding:
-  icon: 'arrow-down-circle'
+  icon: 'grid'
   color: 'purple'
 
 inputs:
