@@ -5,6 +5,12 @@ An Node Action for generating library license report
 ## Usage
 
 ```yml
+name: Generate license report 
+on:
+   workflow_dispatch:
+   schedule:
+      - cron: '0 4 */30 * *' # At 04:00 on every 30ts day-of-month.
+
 jobs:
   build:
     runs-on: ubuntu-latest
