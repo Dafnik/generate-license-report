@@ -1,0 +1,24 @@
+name: 'generate-license-report'
+author: 'Dafnik'
+description: 'Generates a license report'
+branding:
+  icon: 'arrow-down-circle'
+  color: 'purple'
+
+inputs:
+  package:
+    description: 'package.json path'
+    required: false
+    default: 'package.json'
+  path:
+    description: 'file path'
+    required: false
+    default: 'licenses.json'
+  output:
+    description: 'output format'
+    required: false
+    default: 'json'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

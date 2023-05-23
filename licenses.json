@@ -1,0 +1,80 @@
+[
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@actions/core",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/actions/toolkit.git",
+    "remoteVersion": "1.10.0",
+    "installedVersion": "1.10.0",
+    "definedVersion": "1.10.0",
+    "author": "n/a"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@actions/github",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/actions/toolkit.git",
+    "remoteVersion": "5.1.1",
+    "installedVersion": "5.1.1",
+    "definedVersion": "5.1.1",
+    "author": "n/a"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "diff",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "BSD-3-Clause",
+    "link": "git://github.com/kpdecker/jsdiff.git",
+    "remoteVersion": "5.1.0",
+    "installedVersion": "5.1.0",
+    "definedVersion": "5.1.0",
+    "author": "n/a"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "license-report",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/ironSource/license-report.git",
+    "remoteVersion": "6.4.0",
+    "installedVersion": "6.4.0",
+    "definedVersion": "6.4.0",
+    "author": "Yaniv Kessler"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "prettier",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/prettier/prettier.git",
+    "remoteVersion": "2.8.8",
+    "installedVersion": "2.8.8",
+    "definedVersion": "2.8.8",
+    "author": "James Long"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@vercel/ncc",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/vercel/ncc.git",
+    "remoteVersion": "0.36.1",
+    "installedVersion": "0.36.1",
+    "definedVersion": "0.36.1",
+    "author": "n/a"
+  }
+]
