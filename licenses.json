@@ -54,19 +54,6 @@
   {
     "department": "kessler",
     "relatedTo": "stuff",
-    "name": "prettier",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/prettier/prettier.git",
-    "remoteVersion": "2.8.8",
-    "installedVersion": "2.8.8",
-    "definedVersion": "2.8.8",
-    "author": "James Long"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
     "name": "@commitlint/cli",
     "licensePeriod": "perpetual",
     "material": "material",
@@ -115,6 +102,19 @@
     "installedVersion": "8.0.3",
     "definedVersion": "8.0.3",
     "author": "Typicode <typicode@gmail.com>"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "prettier",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/prettier/prettier.git",
+    "remoteVersion": "2.8.8",
+    "installedVersion": "2.8.8",
+    "definedVersion": "2.8.8",
+    "author": "James Long"
   },
   {
     "department": "kessler",

@@ -14,12 +14,6 @@ jobs:
         with:
           install-ignore-scripts: true
 
-      - name: Print versions
-        run: |
-          git --version
-          node --version
-          pnpm --version
-
       - name: Validate
         run: pnpm exec prettier --check .
 
@@ -33,12 +27,6 @@ jobs:
       - uses: dafnik/setup-node-pnpm@v1
         with:
           install-ignore-scripts: true
-
-      - name: Print versions
-        run: |
-          git --version
-          node --version
-          pnpm --version
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'

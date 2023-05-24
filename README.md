@@ -25,11 +25,11 @@ jobs:
 
       - name: generate license report
         id: license-report
-        uses: dafnik/generate-license-report@v0
+        uses: dafnik/generate-license-report@v1
         # with:
-        # package: 'package.json'
-        # path: 'license.json'
-        # output: 'json'
+        #   package-json-path: 'package.json'
+        #   license-report-path: 'licenses.json'
+        #   output-format: 'json'
 
       - name: create new pull request if needed
         if: steps.license-report.outputs.diff != ''
@@ -41,11 +41,11 @@ jobs:
           body: ${{ steps.license-report.outputs.diff }}
 ```
 
-| Inputs    | Default value  | Description                                                                                                                                                                                                                                                         |
-| --------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `package` | `package.json` | Path to your `package.json`                                                                                                                                                                                                                                         |
-| `path`    | `license.json` | Path to your already existing license file.                                                                                                                                                                                                                         |
-| `output`  | `json`         | Output format of `license-report`. [Read more](https://www.npmjs.com/package/license-report#generate-different-outputs) <br/> If you update the output format you also have to update the `path`. <br/> For example: `licenses.md`, `licenses.html`, `licenses.csv` |
+| Inputs                | Default value   | Description                                                                                                                                                                                                                                                                        |
+| --------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `package-json-path`   | `package.json`  | Path to your `package.json`                                                                                                                                                                                                                                                        |
+| `license-report-path` | `licenses.json` | Path to your already existing license report file for comparison                                                                                                                                                                                                                   |
+| `output-format`       | `json`          | Output format of `license-report`. [Read more](https://www.npmjs.com/package/license-report#generate-different-outputs) <br/> If you update the output format you also have to update the `license-report-path`. <br/> For example: `licenses.md`, `licenses.html`, `licenses.csv` |
 
 Furthermore, see [action.yml](action.yml)
 

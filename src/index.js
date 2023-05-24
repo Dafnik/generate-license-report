@@ -1,15 +1,26 @@
 // noinspection ExceptionCaughtLocallyJS
 
-const core = require('@actions/core');
 const {existsSync, readFileSync, writeFileSync} = require('fs');
 const {diffTrimmedLines, createTwoFilesPatch} = require('diff');
-const {format} = require('prettier');
 const {exec} = require('child_process');
+const {getInput, setFailed, setOutput} = require('@actions/core');
 
 try {
-  const packagePath = 'package.json'; //core.getInput('package');
-  const licensesPath = 'licenses.json'; //core.getInput('path');
-  const outputFormat = 'json'; //core.getInput('output');
+  let packagePath = getInput('package');
+  let licensesPath = getInput('path');
+  let outputFormat = getInput('output');
+
+  if (packagePath === '') {
+    packagePath = 'package.json';
+  }
+
+  if (licensesPath === '') {
+    licensesPath = 'licenses.json';
+  }
+
+  if (outputFormat === '') {
+    outputFormat = 'json';
+  }
 
   switch (outputFormat) {
     case 'table':
@@ -22,12 +33,12 @@ try {
       throw new Error('Unknown output format');
   }
 
-  exec(`node ./dist-license-report/index.js --output=${outputFormat} --package=${packagePath}`, (err, stdout) => {
+  exec(`node ./dist-license-report/index.js --output=${outputFormat} --package=${packagePath} | jq`, (err, stdout) => {
     if (err) {
       throw new Error(err.message);
     }
 
-    const newLicenses = format(stdout.toString(), {semi: false, parser: 'json'});
+    const newLicenses = stdout.toString();
 
     let oldLicenses;
     if (existsSync(licensesPath)) {
@@ -41,20 +52,17 @@ try {
     if (diffs.length > 1) {
       console.log('New licenses detected, updating them...');
 
-      let diffString = '```\n' + createTwoFilesPatch(licensesPath, licensesPath, oldLicenses, newLicenses);
-      diffString += '```';
-      diffString = format(diffString, {parser: 'markdown'});
-
       writeFileSync(licensesPath, newLicenses, {encoding: 'utf8'});
-      core.setOutput('diff', diffString);
-      core.setOutput('licenses', newLicenses);
+      setOutput('diff', '```\n' + createTwoFilesPatch(licensesPath, licensesPath, oldLicenses, newLicenses) + '```');
+      setOutput('licenses', newLicenses);
     } else {
       console.log('Licenses match, nothing to do.');
-      core.setOutput('diff', '');
-      core.setOutput('licenses', '');
+
+      setOutput('diff', '');
+      setOutput('licenses', '');
     }
   });
 } catch (error) {
   console.error(error.message);
-  core.setFailed(error.message);
+  setFailed(error.message);
 }
