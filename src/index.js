@@ -6,9 +6,9 @@ const {exec} = require('child_process');
 const {getInput, setFailed, setOutput} = require('@actions/core');
 
 try {
-  let packagePath = getInput('package');
-  let licensesPath = getInput('path');
-  let outputFormat = getInput('output');
+  let packagePath = getInput('package-json-path');
+  let licensesPath = getInput('license-report-path');
+  let outputFormat = getInput('output-format');
 
   if (packagePath === '') {
     packagePath = 'package.json';
