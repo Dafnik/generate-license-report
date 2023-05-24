@@ -6,15 +6,15 @@ branding:
   color: 'purple'
 
 inputs:
-  package:
+  package-json-path:
     description: 'package.json path'
     required: false
     default: 'package.json'
-  path:
+  license-report-path:
     description: 'file path'
     required: false
     default: 'licenses.json'
-  output:
+  output-format:
     description: 'output format'
     required: false
     default: 'json'
