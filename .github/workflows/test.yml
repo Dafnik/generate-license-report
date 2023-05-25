@@ -12,9 +12,11 @@ jobs:
         pnpm: [7, 8]
     steps:
       - uses: actions/checkout@v3
-      - uses: dafnik/setup-node-pnpm@v1
+
+      # Install pnpm
+      - uses: pnpm/action-setup@v2
         with:
-          node: ${{ matrix.node }}
-          pnpm: ${{ matrix.pnpm }}
-          install-ignore-scripts: true
+          version: 8
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+
       - uses: ./
