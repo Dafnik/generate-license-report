@@ -50,11 +50,13 @@ jobs:
 
 ### Inputs
 
-| Inputs                | Default value   | Description                                                                                                                                                                                                                                  |
-|-----------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `package-json-path`   | `package.json`  | Path to your `package.json`                                                                                                                                                                                                                  |
-| `license-report-path` | `licenses.json` | Path to your already existing license report file for comparison                                                                                                                                                                             |
-| `output-format`       | `json`          | Output format of `license-report`. [Supported formats](#supported-output-formats) <br/> If you update the output format you also have to update the `license-report-path`. <br/> For example: `licenses.md`, `licenses.html`, `licenses.csv` |
+| Inputs                          | Default value   | Description                                                                                                                                                                                                                                  |
+|---------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `package-json-path`             | `package.json`  | Path to your `package.json`                                                                                                                                                                                                                  |
+| `license-report-path`           | `licenses.json` | Path to your already existing license report file for comparison                                                                                                                                                                             |
+| `output-format`                 | `json`          | Output format of `license-report`. [Supported formats](#supported-output-formats) <br/> If you update the output format you also have to update the `license-report-path`. <br/> For example: `licenses.md`, `licenses.html`, `licenses.csv` |
+| `prettier`                      | `true`          | Run prettier on license report                                                                                                                                                                                                               |
+| `custom-license-report-command` | `false`         | Execute the `license-report` command located in **your** `package.json`                                                                                                                                                                      |
 
 Furthermore, see [action.yml](action.yml)
 

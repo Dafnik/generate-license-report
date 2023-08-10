@@ -43,7 +43,7 @@ runs:
     - name: format with prettier
       if: "${{ inputs.prettier == 'true' }}"
       shell: bash
-      run: npm exec -- prettier --parser=json --write "${{ inputs.license-report-path }}.new"
+      run: npm exec -- prettier --parser=${{ inputs.output-format}} --write "${{ inputs.license-report-path }}.new"
 
     - uses: LouisBrunner/diff-action@v0.2.0
       name: check for differences
