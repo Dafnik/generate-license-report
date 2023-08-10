@@ -88,7 +88,7 @@ runs:
       shell: bash
       run: |
         echo "diff<<${{ steps.gen-del.outputs.delimiter1 }}" >> "${GITHUB_OUTPUT}"
-        echo "${{ steps.diff-check.outputs.output }}" >> "${GITHUB_OUTPUT}"
+        echo "```${{ steps.diff-check.outputs.output }}```" >> "${GITHUB_OUTPUT}"
         echo "${{ steps.gen-del.outputs.delimiter1 }}" >> "${GITHUB_OUTPUT}"
 
     - name: output if passed
