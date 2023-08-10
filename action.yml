@@ -64,16 +64,32 @@ runs:
         mode: addition
         tolerance: same
 
+    - name: gen delimiter
+      id: gen-del
+      shell: bash
+      run: |
+        echo "delimiter=$(openssl rand -hex 8)" >> "${GITHUB_OUTPUT}"
+        echo "delimiter1=$(openssl rand -hex 8)" >> "${GITHUB_OUTPUT}"
+
     - name: output licenses
       shell: bash
-      run: echo "licenses=$(cat ${{ inputs.license-report-path }})" >> "$GITHUB_OUTPUT"
+      run: |
+        echo "licenses<<${{ steps.gen-del.outputs.delimiter }}" >> "${GITHUB_OUTPUT}"
+        echo "$(cat ${{ inputs.license-report-path }})" >> "${GITHUB_OUTPUT}"
+        echo "${{ steps.gen-del.outputs.delimiter }}" >> "${GITHUB_OUTPUT}"
 
-    - name: Move files in place if needed
+    - name: Move files in place
+      if: steps.diff-check.outputs.passed == 'false'
+      shell: bash
+      run: mv -f ${{ inputs.license-report-path }}.new ${{ inputs.license-report-path }}
+
+    - name: output diff
       if: steps.diff-check.outputs.passed == 'false'
       shell: bash
       run: |
-        mv -f "${{ inputs.license-report-path }}.new" "${{ inputs.license-report-path }}"
-        echo "diff=${{ steps.diff-check.outputs.output }}" >> "$GITHUB_OUTPUT"
+        echo "diff<<${{ steps.gen-del.outputs.delimiter1 }}" >> "${GITHUB_OUTPUT}"
+        echo "${{ steps.diff-check.outputs.output }}" >> "${GITHUB_OUTPUT}"
+        echo "${{ steps.gen-del.outputs.delimiter1 }}" >> "${GITHUB_OUTPUT}"
 
     - name: output if passed
       if: steps.diff-check.outputs.passed == 'true'
