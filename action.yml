@@ -55,23 +55,19 @@ runs:
         mode: addition
         tolerance: same
 
-    - name: gen delimiter
-      id: gen-del
+    - name: Move files in place
+      if: steps.diff-check.outputs.passed == 'false'
       shell: bash
-      run: echo "delimiter=$(openssl rand -hex 8)" >> "${GITHUB_OUTPUT}"
+      run: mv -f ${{ inputs.license-report-path }}.new ${{ inputs.license-report-path }}
 
     - name: output licenses
       id: output
       shell: bash
       run: |
-        echo "licenses<<${{ steps.gen-del.outputs.delimiter }}" >> "${GITHUB_OUTPUT}"
+        delimiter=$(openssl rand -hex 8)
+        echo "licenses<<$delimiter" >> "${GITHUB_OUTPUT}"
         echo -e "$(cat ${{ inputs.license-report-path }})" >> "${GITHUB_OUTPUT}"
-        echo "${{ steps.gen-del.outputs.delimiter }}" >> "${GITHUB_OUTPUT}"
-
-    - name: Move files in place
-      if: steps.diff-check.outputs.passed == 'false'
-      shell: bash
-      run: mv -f ${{ inputs.license-report-path }}.new ${{ inputs.license-report-path }}
+        echo "$delimiter" >> "${GITHUB_OUTPUT}"
 
 outputs:
   diff:
