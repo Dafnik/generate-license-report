@@ -18,7 +18,7 @@ jobs:
 
       - name: generate license report
         id: license-report
-        uses: dafnik/generate-license-report@v1
+        uses: dafnik/generate-license-report@v2
 
       - name: create new pull request if needed
         if: steps.license-report.outputs.diff != ''
