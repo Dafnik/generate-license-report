@@ -30,15 +30,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: checking required dependencies
-      shell: bash
-      run: npm list | grep license-report || npm install -g license-report --no-shrinkwrap
-
-    - name: checking required dependencies
-      if: "${{ inputs.prettier == 'true' }}"
-      shell: bash
-      run: npm list | grep prettier || npm install -g prettier --no-shrinkwrap
-
     - name: generate new report
       if: "${{ inputs.custom-license-report-command == 'false' }}"
       shell: bash
