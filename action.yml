@@ -76,7 +76,7 @@ runs:
 outputs:
   diff:
     description: Difference output of license report
-    value: ${{ steps.diff-check.outputs.diff }}
+    value: ${{ steps.diff-check.outputs.output }}
   licenses:
     description: Difference output of license report
     value: ${{ steps.output.outputs.licenses }}
