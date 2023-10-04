@@ -6,6 +6,14 @@ branding:
   color: 'purple'
 
 inputs:
+  custom-license-report-command:
+    description: 'Indicates if the action should use the `license-report` command from `package.json` or not'
+    required: false
+    default: 'false'
+  prettier:
+    description: 'Indicates if the license report should be formatted with prettier'
+    required: false
+    default: 'true'
   package-json-path:
     description: 'package.json path'
     required: false
@@ -20,5 +28,51 @@ inputs:
     default: 'json'
 
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps:
+    - name: generate new report
+      if: "${{ inputs.custom-license-report-command == 'false' }}"
+      shell: bash
+      run: npm exec -- license-report --only=prod,peer --fields=name --fields=licenseType --fields=link --fields=installedVersion --fields=author --package=${{ inputs.package-json-path }} --output=${{ inputs.output-format }} > "${{ inputs.license-report-path }}.new"
+
+    - name: generate new report (custom command)
+      if: "${{ inputs.custom-license-report-command == 'true' }}"
+      shell: bash
+      run: npm run license-report > "${{ inputs.license-report-path }}.new"
+
+    - name: format with prettier
+      if: "${{ inputs.prettier == 'true' }}"
+      shell: bash
+      run: npm exec -- prettier --parser=${{ inputs.output-format}} --write "${{ inputs.license-report-path }}.new"
+
+    - uses: LouisBrunner/diff-action@v0.2.0
+      name: check for differences
+      id: diff-check # required for steps.diff-check to function
+      continue-on-error: true
+      with:
+        old: ${{ inputs.license-report-path }}
+        new: ${{ inputs.license-report-path }}.new
+        mode: addition
+        tolerance: same
+
+    - name: Move files in place
+      if: steps.diff-check.outputs.passed == 'false'
+      shell: bash
+      run: mv -f ${{ inputs.license-report-path }}.new ${{ inputs.license-report-path }}
+
+    - name: output licenses
+      id: output
+      shell: bash
+      run: |
+        delimiter=$(openssl rand -hex 8)
+        echo "licenses<<$delimiter" >> "${GITHUB_OUTPUT}"
+        echo -e "$(cat ${{ inputs.license-report-path }})" >> "${GITHUB_OUTPUT}"
+        echo "$delimiter" >> "${GITHUB_OUTPUT}"
+
+outputs:
+  diff:
+    description: Difference output of license report
+    value: ${{ steps.diff-check.outputs.output }}
+  licenses:
+    description: Difference output of license report
+    value: ${{ steps.output.outputs.licenses }}

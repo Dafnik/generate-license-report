@@ -4,7 +4,6 @@
   "semanticCommitScope": "",
   "semanticCommitType": "build",
   "commitBody": "See associated pull request for more information.",
-  "schedule": ["after 11:00pm on monday", "before 11:00am on tuesday", "every 1 months"],
   "labels": ["dependencies"],
   "timezone": "Europe/Vienna",
   "baseBranches": ["main"],
@@ -19,5 +18,13 @@
       "groupName": "major-update"
     }
   ],
-  "extends": ["config:base", ":pinVersions", ":unpublishSafe", ":prNotPending", ":preserveSemverRanges", ":rebaseStalePrs"]
+  "extends": [
+    "schedule:monthly",
+    "config:base",
+    ":pinVersions",
+    ":unpublishSafe",
+    ":prNotPending",
+    ":preserveSemverRanges",
+    ":rebaseStalePrs"
+  ]
 }

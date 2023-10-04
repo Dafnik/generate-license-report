@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   prettier:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -18,7 +18,7 @@ jobs:
         run: pnpm exec prettier --check .
 
   commitlint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
