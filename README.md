@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout your repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # generate-license-report needs node_modules installed to fully function
       # caching is not setup as this action should not run this often
@@ -32,14 +32,14 @@ jobs:
       
       - name: generate license report
         id: license-report
-        uses: dafnik/generate-license-report@v1
+        uses: dafnik/generate-license-report@v2
         #with:
         #  package-json-path: 'package.json'
         #  license-report-path: 'licenses.json'
         #  output-format: 'json'
 
       - name: create new pull request if needed
-        if: steps.license-report.outputs.diff != ''
+        if: steps.license-report.outputs.has-changes == 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           title: Generated new licenses report
@@ -69,10 +69,11 @@ Furthermore, see [action.yml](action.yml)
 
 ### Outputs
 
-| Outputs    | Description                                                                                                                          |
-|------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| `diff`     | Differences between old and new license report in `markdown`. <br/> **Empty if your current / passed license-report is up-to-date.** |
-| `licenses` | License report as `string` in your chosen `output-format`. <br> Is always returned.                                                  |
+| Outputs       | Description                                                                         |
+|---------------|-------------------------------------------------------------------------------------|
+| `has-changes` | Flag to indicate if there are changes in the licenses file.                         |
+| `diff`        | Differences between old and new license report in `markdown`.                       |
+| `licenses`    | License report as `string` in your chosen `output-format`. <br> Is always returned. |
 
 ## Building
 
