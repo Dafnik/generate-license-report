@@ -45,7 +45,7 @@ runs:
       shell: bash
       run: npm exec -- prettier --parser=${{ inputs.output-format}} --write "${{ inputs.license-report-path }}.new"
 
-    - uses: LouisBrunner/diff-action@v0.2.0
+    - uses: LouisBrunner/diff-action@v1.0.0
       name: check for differences
       id: diff-check # required for steps.diff-check to function
       continue-on-error: true
