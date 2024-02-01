@@ -39,7 +39,7 @@ jobs:
         #  output-format: 'json'
 
       - name: create new pull request if needed
-        if: steps.license-report.outputs.has-changes == 'true'
+        if: steps.license-report.outputs.has-no-changes != 'true'
         uses: peter-evans/create-pull-request@v5
         with:
           title: Generated new licenses report
@@ -69,11 +69,11 @@ Furthermore, see [action.yml](action.yml)
 
 ### Outputs
 
-| Outputs       | Description                                                                         |
-|---------------|-------------------------------------------------------------------------------------|
-| `has-changes` | Flag to indicate if there are changes in the licenses file.                         |
-| `diff`        | Differences between old and new license report in `markdown`.                       |
-| `licenses`    | License report as `string` in your chosen `output-format`. <br> Is always returned. |
+| Outputs          | Description                                                                         |
+|------------------|-------------------------------------------------------------------------------------|
+| `has-no-changes` | Flag to indicate if there are no changes in the licenses file.                      |
+| `diff`           | Differences between old and new license report in `markdown`.                       |
+| `licenses`       | License report as `string` in your chosen `output-format`. <br> Is always returned. |
 
 ## Building
 
