@@ -63,7 +63,8 @@ runs:
     - name: Delete new file if not needed
       if: steps.diff-check.outputs.passed == 'true'
       shell: bash
-      run: rm ${{ inputs.license-report-path }}.new
+      run: |
+        rm ${{ inputs.license-report-path }}.new
 
     - name: output licenses
       id: output
@@ -75,7 +76,7 @@ runs:
         echo "$delimiter" >> "${GITHUB_OUTPUT}"
 
 outputs:
-  has-changes:
+  has-no-changes:
     description: Flag to indicate if there are changes in the licenses file.
     value: ${{ steps.diff-check.outputs.passed }}
   diff:
