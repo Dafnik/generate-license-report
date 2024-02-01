@@ -6,11 +6,11 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: dafnik/setup-node-pnpm@v1
+      - uses: dafnik/setup-node-pnpm@v2
         with:
           install-ignore-scripts: true
 
@@ -20,11 +20,11 @@ jobs:
   commitlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: dafnik/setup-node-pnpm@v1
+      - uses: dafnik/setup-node-pnpm@v2
         with:
           install-ignore-scripts: true
 
