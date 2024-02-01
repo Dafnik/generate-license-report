@@ -25,5 +25,6 @@ jobs:
       - name: check
         env:
           licenses: ${{ steps.report.outputs.licenses }}
+          has-no-changes: ${{ steps.report.outputs.has-no-changes }}
           diff: ${{ steps.report.outputs.diff }}
         run: echo "Check"
