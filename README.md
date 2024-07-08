@@ -29,7 +29,6 @@ jobs:
       #- run: pnpm install --frozen-lockfile --ignore-scripts
       # yarn
       #- run: yarn install --frozen-lockfile --ignore-scripts
-      
       - name: generate license report
         id: license-report
         uses: dafnik/generate-license-report@v2
@@ -50,6 +49,7 @@ jobs:
 
 ### Inputs
 
+<!-- prettier-ignore-start -->
 | Inputs                          | Default value   | Description                                                                                                                                                                                                                                  |
 |---------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `package-json-path`             | `package.json`  | Path to your `package.json`                                                                                                                                                                                                                  |
@@ -57,6 +57,7 @@ jobs:
 | `output-format`                 | `json`          | Output format of `license-report`. [Supported formats](#supported-output-formats) <br/> If you update the output format you also have to update the `license-report-path`. <br/> For example: `licenses.md`, `licenses.html`, `licenses.csv` |
 | `prettier`                      | `true`          | Run prettier on license report                                                                                                                                                                                                               |
 | `custom-license-report-command` | `false`         | Execute the `license-report` command located in **your** `package.json`                                                                                                                                                                      |
+<!-- prettier-ignore-end -->
 
 Furthermore, see [action.yml](action.yml)
 
@@ -69,11 +70,13 @@ Furthermore, see [action.yml](action.yml)
 
 ### Outputs
 
+<!-- prettier-ignore-start -->
 | Outputs          | Description                                                                         |
 |------------------|-------------------------------------------------------------------------------------|
 | `has-no-changes` | Flag to indicate if there are no changes in the licenses file.                      |
 | `diff`           | Differences between old and new license report in `markdown`.                       |
 | `licenses`       | License report as `string` in your chosen `output-format`. <br> Is always returned. |
+<!-- prettier-ignore-end -->
 
 ## Building
 

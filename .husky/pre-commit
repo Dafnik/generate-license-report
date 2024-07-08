@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-LIST=$(git diff-index --name-only --cached HEAD);
-if [ "$LIST" ]; then
-  npx prettier --write "$LIST";
-  git add "$LIST";
-fi
