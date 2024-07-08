@@ -1,5 +1,5 @@
 {
-  "enabledManagers": ["npm", "github-actions"],
+  "enabledManagers": ["github-actions"],
   "semanticCommits": "enabled",
   "semanticCommitScope": "",
   "semanticCommitType": "build",
