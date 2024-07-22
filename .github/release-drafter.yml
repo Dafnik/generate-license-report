@@ -16,10 +16,9 @@ categories:
       - 'bug'
   - title: '📖 Docs'
     labels:
-      - 'docs'
+      - 'documentation'
   - title: '🧰 Maintenance'
     labels:
-      - 'documentation'
       - 'chore'
       - 'dependencies'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
