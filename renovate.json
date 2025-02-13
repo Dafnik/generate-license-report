@@ -20,9 +20,9 @@
   ],
   "extends": [
     "schedule:monthly",
-    "config:base",
+    "config:recommended",
     ":pinVersions",
-    ":unpublishSafe",
+    "npm:unpublishSafe",
     ":prNotPending",
     ":preserveSemverRanges",
     ":rebaseStalePrs"
