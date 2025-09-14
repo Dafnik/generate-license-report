@@ -6,7 +6,7 @@
   "commitBody": "See associated pull request for more information.",
   "labels": ["dependencies"],
   "timezone": "Europe/Vienna",
-  "baseBranches": ["main"],
+  "baseBranchPatterns": ["main"],
   "assignees": ["Dafnik"],
   "packageRules": [
     {
