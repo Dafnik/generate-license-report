@@ -22,7 +22,7 @@
     "schedule:monthly",
     "config:recommended",
     ":pinVersions",
-    "npm:unpublishSafe",
+    "security:minimumReleaseAgeNpm",
     ":prNotPending",
     ":preserveSemverRanges",
     ":rebaseStalePrs"
